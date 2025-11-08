@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - DevSahara</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ai-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .ai-feature {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .ai-feature:hover {
+            transform: translateY(-5px);
+        }
+        .chat-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .message {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        .user-message {
+            background: #e3f2fd;
+            text-align: right;
+        }
+        .ai-message {
+            background: #f5f5f5;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 DevSahara AI Assistant</h1>
+        <p>Your intelligent coding companion for African & Asian developers</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ai-assistant.html">AI Assistant</a>
+        <a href="projects.html">Projects</a>
+    </nav>
+
+    <div class="ai-container">
+        <div class="ai-feature" onclick="openFeature('code-helper')">
+            <h3>💻 Code Helper</h3>
+            <p>Get help with programming problems and code reviews</p>
+        </div>
+
+        <div class="ai-feature" onclick="openFeature('project-ideas')">
+            <h3>🚀 Project Ideas</h3>
+            <p>Generate creative project ideas for your portfolio</p>
+        </div>
+
+        <div class="ai-feature" onclick="openFeature('learning-path')">
+            <h3>📚 Learning Path</h3>
+            <p>Get personalized learning recommendations</p>
+        </div>
+
+        <div class="ai-feature" onclick="openFeature('tech-chat')">
+            <h3>💬 Tech Chat</h3>
+            <p>Chat with AI about any technical topic</p>
+        </div>
+
+        <div id="feature-content" class="chat-container" style="display: none;">
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask me anything..." style="width: 70%; padding: 0.5rem;">
+                <button onclick="sendMessage()" style="padding: 0.5rem 1rem;">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="ai-assistant.js"></script>
+</body>
+</html>
