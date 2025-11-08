@@ -1,4 +1,3 @@
-// Enhanced projects with AI features
 const projects = [
     { 
         id: 1, 
@@ -79,10 +78,8 @@ function getProjectHelp(projectId) {
     const project = projects.find(p => p.id === projectId);
     const helpMessage = `I need help with the ${project.name} project. It uses ${project.tech.join(', ')}. Can you suggest some resources or approaches?`;
     
-    // Redirect to AI assistant with pre-filled message
     localStorage.setItem('aiHelpRequest', helpMessage);
     window.location.href = 'ai-assistant.html';
 }
 
-// Load projects when page loads
 document.addEventListener('DOMContentLoaded', loadProjects);
