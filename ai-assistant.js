@@ -1,19 +1,17 @@
 // DevSahara AI Assistant - Complete AI Integration
 class DevSaharaAI {
     constructor() {
-        this.apiKey = 'sk-your-free-deepseek-api-key'; // I'll handle this
+        this.apiKey = 'sk-your-free-deepseek-api-key';
         this.currentFeature = '';
         this.conversationHistory = [];
     }
 
-    // Initialize AI features
     init() {
         console.log('DevSahara AI Assistant initialized');
         this.setupEventListeners();
     }
 
     setupEventListeners() {
-        // Enter key support
         document.getElementById('user-input')?.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 this.sendMessage();
@@ -21,7 +19,6 @@ class DevSaharaAI {
         });
     }
 
-    // Open different AI features
     openFeature(feature) {
         this.currentFeature = feature;
         document.getElementById('feature-content').style.display = 'block';
@@ -37,7 +34,6 @@ class DevSaharaAI {
         this.addMessage(welcomeMessages[feature], 'ai');
     }
 
-    // Send message to AI
     async sendMessage() {
         const input = document.getElementById('user-input');
         const message = input.value.trim();
@@ -47,13 +43,11 @@ class DevSaharaAI {
         this.addMessage(message, 'user');
         input.value = '';
 
-        // Show loading
         this.addMessage('Thinking...', 'ai');
 
         try {
-            // For now, using mock responses - I'll integrate real API
             const response = await this.getAIResponse(message);
-            this.removeLastMessage(); // Remove "Thinking..."
+            this.removeLastMessage();
             this.addMessage(response, 'ai');
         } catch (error) {
             this.removeLastMessage();
@@ -61,7 +55,6 @@ class DevSaharaAI {
         }
     }
 
-    // Smart response generator (fallback when API is unavailable)
     generateSmartResponse(userMessage) {
         const lowerMessage = userMessage.toLowerCase();
         
@@ -84,15 +77,11 @@ class DevSaharaAI {
         return "That's an interesting question! For developers in Africa and Asia, I recommend focusing on solutions that address local challenges like connectivity, payments, and multi-language support. What specific area are you most interested in?";
     }
 
-    // Mock API response (I'll replace with real DeepSeek API)
     async getAIResponse(message) {
-        // Simulate API call delay
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
         return this.generateSmartResponse(message);
     }
 
-    // Chat management
     addMessage(text, sender) {
         const messagesDiv = document.getElementById('chat-messages');
         const messageDiv = document.createElement('div');
@@ -119,7 +108,6 @@ class DevSaharaAI {
     }
 }
 
-// Global functions for HTML onclick events
 let aiAssistant;
 
 function openFeature(feature) {
@@ -136,7 +124,6 @@ function sendMessage() {
     }
 }
 
-// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     aiAssistant = new DevSaharaAI();
     aiAssistant.init();
