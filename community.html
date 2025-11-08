@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - DevSahara</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .online-users {
+            background: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .user-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        .user-online {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            background: var(--success-color);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .chat-room {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .message {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .message.own {
+            background: var(--gradient);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .message.other {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>👥 DevSahara Community</h1>
+        <p>Connect with African & Asian developers worldwide</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ai-assistant.html">AI Assistant</a>
+        <a href="projects.html">Projects</a>
+        <a href="community.html" class="active">Community</a>
+        <a href="auth.html">Join Community</a>
+    </nav>
+
+    <main>
+        <!-- إحصائيات المجتمع -->
+        <section class="fade-in-up">
+            <div class="online-users">🟢 124 developers online now</div>
+            <h2>Community Overview</h2>
+            <div class="community-stats">
+                <div class="stat-card">
+                    <div class="stat-number">1,847</div>
+                    <p>Total Members</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <p>Active Projects</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">23</div>
+                    <p>Countries</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <p>Response Rate</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- الأعضاء النشطون -->
+        <section class="fade-in-up">
+            <h2>Active Developers 🌟</h2>
+            <div class="features-grid" id="active-users">
+                <!-- سيتم ملؤه بواسطة JavaScript -->
+            </div>
+        </section>
+
+        <!-- غرفة الدردشة -->
+        <section class="fade-in-up">
+            <h2>Community Chat 💬</h2>
+            <div class="chat-room">
+                <div id="chat-messages" style="height: 400px; overflow-y: auto; border: 1px solid #e9ecef; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; background: #f8f9fa;">
+                    <!-- الرسائل تظهر هنا -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type your message to the community..." style="flex: 1; padding: 1rem; border: 1px solid #ddd; border-radius: 25px; margin-right: 1rem;">
+                    <button onclick="sendCommunityMessage()" class="btn">
+                        <span>Send</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- المناقشات النشطة -->
+        <section class="fade-in-up">
+            <h2>Active Discussions 🔥</h2>
+            <div id="discussions-list">
+                <!-- المناقشات تظهر هنا -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DevSahara - African & Asian Developers Community</p>
+    </footer>
+
+    <script src="community.js"></script>
+</body>
+</html>
