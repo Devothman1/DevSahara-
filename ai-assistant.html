@@ -6,125 +6,132 @@
     <title>AI Assistant - DevSahara</title>
     <link rel="stylesheet" href="style.css">
     <style>
-<style>
-    .ai-container {
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 2rem;
-    }
-    .ai-feature {
-        background: white;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .ai-feature:hover {
-        transform: translateY(-5px);
-        background: #f8f9fa;
-    }
-    .chat-container {
-        background: white;
-        border-radius: 10px;
-        padding: 1rem;
-        margin-top: 2rem;
-        border: 2px solid #667eea;
-    }
-    .chat-messages {
-        height: 300px;
-        overflow-y: auto;
-        border: 1px solid #ddd;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        background: #fafafa;
-    }
-    .message {
-        margin: 0.5rem 0;
-        padding: 0.8rem;
-        border-radius: 10px;
-        max-width: 80%;
-    }
-    .user-message {
-        background: #667eea;
-        color: white;
-        text-align: right;
-        margin-left: auto;
-    }
-    .ai-message {
-        background: #e9ecef;
-        color: #333;
-        text-align: left;
-        margin-right: auto;
-    }
-    .chat-input {
-        display: flex;
-        gap: 0.5rem;
-    }
-    .chat-input input {
-        flex: 1;
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
-    .chat-input button {
-        background: #667eea;
-        color: white;
-        border: none;
-        padding: 0.8rem 1.5rem;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-    }
-    .chat-input button:hover {
-        background: #5a6fd8;
-    }
-</style>
+        .ai-hero {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .ai-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .ai-feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .ai-feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .ai-feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-active {
+            background: var(--gradient-light);
+            border-color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>🤖 DevSahara AI Assistant</h1>
-        <p>Your intelligent coding companion for African & Asian developers</p>
+        <p>Your intelligent partner for African & Asian software development</p>
     </header>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="ai-assistant.html">AI Assistant</a>
         <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contribute.html">Contribute</a>
     </nav>
 
-    <div class="ai-container">
-        <div class="ai-feature" onclick="openFeature('code-helper')">
-            <h3>💻 Code Helper</h3>
-            <p>Get help with programming problems and code reviews</p>
+    <main>
+        <div class="ai-hero fade-in-up">
+            <h2>Hello, Developer! 👋</h2>
+            <p>I'm here to help you build amazing solutions for African and Asian markets</p>
         </div>
 
-        <div class="ai-feature" onclick="openFeature('project-ideas')">
-            <h3>🚀 Project Ideas</h3>
-            <p>Generate creative project ideas for your portfolio</p>
-        </div>
+        <div class="ai-features-grid">
+            <div class="ai-feature-card fade-in-up" onclick="openFeature('code-helper')">
+                <div class="ai-feature-icon">💻</div>
+                <h3>Code Helper</h3>
+                <p>Get instant help with programming problems, code reviews, and debugging</p>
+                <div class="badge">Popular</div>
+            </div>
 
-        <div class="ai-feature" onclick="openFeature('learning-path')">
-            <h3>📚 Learning Path</h3>
-            <p>Get personalized learning recommendations</p>
-        </div>
+            <div class="ai-feature-card fade-in-up" onclick="openFeature('project-ideas')">
+                <div class="ai-feature-icon">🚀</div>
+                <h3>Project Ideas</h3>
+                <p>Generate creative project ideas tailored to African & Asian market needs</p>
+                <div class="badge">New</div>
+            </div>
 
-        <div class="ai-feature" onclick="openFeature('tech-chat')">
-            <h3>💬 Tech Chat</h3>
-            <p>Chat with AI about any technical topic</p>
+            <div class="ai-feature-card fade-in-up" onclick="openFeature('learning-path')">
+                <div class="ai-feature-icon">📚</div>
+                <h3>Learning Path</h3>
+                <p>Personalized learning recommendations based on your goals</p>
+            </div>
+
+            <div class="ai-feature-card fade-in-up" onclick="openFeature('tech-chat')">
+                <div class="ai-feature-icon">💬</div>
+                <h3>Tech Chat</h3>
+                <p>Discuss any technical topic and get expert guidance</p>
+            </div>
         </div>
 
         <div id="feature-content" class="chat-container" style="display: none;">
+            <h3 id="feature-title" style="margin-bottom: 1.5rem;"></h3>
             <div class="chat-messages" id="chat-messages"></div>
             <div class="chat-input">
-                <input type="text" id="user-input" placeholder="Ask me anything..." style="width: 70%; padding: 0.5rem;">
-                <button onclick="sendMessage()" style="padding: 0.5rem 1rem;">Send</button>
+                <input type="text" id="user-input" placeholder="Ask me anything about development...">
+                <button onclick="sendMessage()">
+                    <span>Send Message</span>
+                </button>
             </div>
         </div>
-    </div>
+
+        <!-- قسم إضافي للميزات -->
+        <section class="fade-in-up">
+            <h2>Why Use Our AI Assistant?</h2>
+            <div class="features-grid" style="margin-top: 2rem;">
+                <div class="feature-card">
+                    <h3>🌍 Regional Focus</h3>
+                    <p>Solutions tailored for African and Asian market challenges</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Real-time Help</h3>
+                    <p>Instant assistance for your coding and project needs</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Personalized</h3>
+                    <p>Adapts to your skill level and learning goals</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DevSahara - African & Asian Developers Community</p>
+    </footer>
 
     <script src="ai-assistant.js"></script>
 </body>
