@@ -1,35 +1,85 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌍 DevSahara - منصة المطورين المغاربية</title>
+    <title>DevSahara - African & Asian Developers Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>🌍 DevSahara</h1>
-        <p>واحة المطورين العرب - حيث تلتقي الأفكار العظيمة</p>
+        <h1>DevSahara</h1>
+        <p>Exclusive collaboration platform for African and Asian developers</p>
     </header>
     
     <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#projects">المشاريع</a>
-        <a href="#contribute">المساهمة</a>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contribute">Contribute</a>
     </nav>
 
     <main>
         <section id="home">
-            <h2>مرحباً بك في DevSahara! 🚀</h2>
-            <p>منصة تعاونية للمطورين من 🇲🇦🇩🇿🇹🇳🇸🇳🇪🇬🇱🇾 وجميع العالم العربي</p>
-            <button onclick="showProjects()">استكشاف المشاريع</button>
+            <h2>Welcome to African & Asian Developers Community</h2>
+            <p>Collaborative space exclusively for software developers from Africa and Asia</p>
+            <button onclick="showProjects()">Explore Projects</button>
+            <button onclick="showAbout()">About Platform</button>
+        </section>
+
+        <section id="about" style="display:none;">
+            <h2>About Our Platform</h2>
+            <p>This platform is dedicated to software developers from:</p>
+            <div class="regions">
+                <div class="region">
+                    <h3>Africa</h3>
+                    <ul>
+                        <li>North Africa (Morocco, Algeria, Tunisia, Egypt, Libya...)</li>
+                        <li>West Africa (Nigeria, Ghana, Ivory Coast, Senegal...)</li>
+                        <li>East Africa (Kenya, Ethiopia, Tanzania, Uganda...)</li>
+                        <li>Central Africa (Congo, Cameroon, Angola...)</li>
+                        <li>Southern Africa (South Africa, Zimbabwe, Zambia...)</li>
+                    </ul>
+                </div>
+                <div class="region">
+                    <h3>Asia</h3>
+                    <ul>
+                        <li>South Asia (India, Pakistan, Bangladesh, Sri Lanka...)</li>
+                        <li>East Asia (China, Japan, Korea, Taiwan...)</li>
+                        <li>Southeast Asia (Indonesia, Vietnam, Thailand, Malaysia...)</li>
+                        <li>West Asia (Saudi Arabia, UAE, Qatar, Oman...)</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section id="projects" style="display:none;">
-            <h2>المشاريع المتاحة</h2>
+            <h2>Available Projects</h2>
             <div id="projects-list"></div>
         </section>
+
+        <section id="contribute" style="display:none;">
+            <h2>How to Contribute</h2>
+            <div class="contribution-steps">
+                <div class="step">
+                    <h3>1. Fork the Project</h3>
+                    <p>Create your own copy of the repository</p>
+                </div>
+                <div class="step">
+                    <h3>2. Create Branch</h3>
+                    <p>Work on your feature or bug fix</p>
+                </div>
+                <div class="step">
+                    <h3>3. Submit Pull Request</h3>
+                    <p>Share your improvements with the community</p>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2024 DevSahara - African & Asian Developers Community</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>
