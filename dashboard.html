@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DevSahara</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0.5rem 0;
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .progress-circle {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .activity-feed {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .activity-item {
+            padding: 1rem;
+            border-left: 3px solid var(--primary-color);
+            margin: 0.5rem 0;
+            background: var(--primary-light);
+        }
+        .dark-mode {
+            background: #1a1a1a;
+            color: white;
+        }
+        .dark-mode .stat-card,
+        .dark-mode .activity-feed {
+            background: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📊 DevSahara Dashboard</h1>
+        <p>Your personalized learning journey overview</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ai-assistant.html">AI Assistant</a>
+        <a href="learning.html">Learning Hub</a>
+        <a href="community.html">Community</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="auth.html">Profile</a>
+        <button id="theme-toggle" class="btn btn-secondary">🌙</button>
+    </nav>
+
+    <main>
+        <!-- إحصائيات سريعة -->
+        <section class="fade-in-up">
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <h3>Learning Progress</h3>
+                    <div class="stat-number" id="progress-percent">0%</div>
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="54" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" fill="none" 
+                                stroke="url(#gradient)" stroke-width="8" stroke-linecap="round"
+                                stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#667eea"/>
+                                <stop offset="100%" stop-color="#764ba2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Current Streak</h3>
+                    <div class="stat-number" id="current-streak">0</div>
+                    <p>Days in a row</p>
+                    <div class="streak-calendar" id="streak-calendar">
+                        <!-- تقويم الاستمرارية -->
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Points Earned</h3>
+                    <div class="stat-number" id="total-points">0</div>
+                    <p>Total learning points</p>
+                    <div class="points-breakdown">
+                        <div>Learning: <span id="learning-points">0</span></div>
+                        <div>Challenges: <span id="challenge-points">0</span></div>
+                        <div>Community: <span id="community-points">0</span></div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Skill Level</h3>
+                    <div class="stat-number" id="skill-level">Beginner</div>
+                    <div class="level-progress">
+                        <div class="progress-container">
+                            <div class="progress-bar" id="level-progress-bar"></div>
+                        </div>
+                        <span id="next-level">Intermediate (200 points)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الإجراءات السريعة -->
+        <section class="fade-in-up">
+            <h2>Quick Actions ⚡</h2>
+            <div class="quick-actions">
+                <button class="btn" onclick="dashboard.startDailyChallenge()">
+                    <span>🎯 Daily Challenge</span>
+                </button>
+                <button class="btn" onclick="dashboard.continueLearning()">
+                    <span>📚 Continue Learning</span>
+                </button>
+                <button class="btn" onclick="dashboard.joinCommunity()">
+                    <span>👥 Join Community</span>
+                </button>
+                <button class="btn" onclick="dashboard.askAI()">
+                    <span>🤖 Ask AI Assistant</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- النشاط الأخير -->
+        <section class="fade-in-up">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Recent Activity 📈</h3>
+                    <div class="activity-feed" id="recent-activity">
+                        <!-- النشاط الأخير يظهر هنا -->
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Recommended Next 🎯</h3>
+                    <div id="recommended-next">
+                        <!-- التوصيات تظهر هنا -->
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Achievements 🏆</h3>
+                    <div id="recent-achievements">
+                        <!-- الإنجازات تظهر هنا -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- إحصائيات متقدمة -->
+        <section class="fade-in-up">
+            <h2>Learning Analytics 📊</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>Time Spent Learning</h4>
+                    <canvas id="time-chart" width="400" height="200"></canvas>
+                </div>
+                <div class="feature-card">
+                    <h4>Skill Distribution</h4>
+                    <canvas id="skills-chart" width="400" height="200"></canvas>
+                </div>
+                <div class="feature-card">
+                    <h4>Weekly Progress</h4>
+                    <canvas id="progress-chart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DevSahara - African & Asian Developers Community</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+                              </html>
