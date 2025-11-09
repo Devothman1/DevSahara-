@@ -596,3 +596,199 @@ footer p {
     margin: 0.2rem;
     font-weight: 600;
 }
+/* أنماط الذكاء الاصطناعي المتقدم */
+.ai-presence-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ai-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* أنماط المجتمع */
+.discussion-card, .study-group-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.discussion-card:hover, .study-group-card:hover {
+    transform: translateY(-2px);
+}
+
+.discussion-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.discussion-tags {
+    margin: 1rem 0;
+}
+
+.tag {
+    background: var(--primary-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.live-activity {
+    background: var(--success-light);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideInLeft 0.5s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* أنماط نظام المكافآت */
+.points-notification, .achievement-notification, .level-up-notification {
+    animation: slideInRight 0.5s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.points-popup, .achievement-popup, .level-up-popup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.level-badge {
+    font-size: 2rem;
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+}
+
+/* أنماط التقويم */
+.streak-days {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.streak-day {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    font-size: 0.8rem;
+}
+
+.streak-day.active {
+    background: var(--success-color);
+    color: white;
+}
+
+/* أنماط الوضع الداكن */
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: white;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+}
+
+.dark-mode .stat-card,
+.dark-mode .feature-card,
+.dark-mode .discussion-card,
+.dark-mode .study-group-card {
+    background: var(--card-bg);
+    color: white;
+}
+
+.dark-mode .ai-presence-indicator {
+    background: var(--card-bg);
+    color: white;
+}
+
+/* أنماط متجاوبة */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ai-presence-indicator {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+    }
+}
+
+/* تحسينات الوصول */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* دعم متعدد اللغات */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .ai-presence-indicator {
+    right: auto;
+    left: 20px;
+}
