@@ -1175,6 +1175,150 @@ html {
   }
 }
 
+/* تحسينات للبحث والاقتراحات */
+.search-suggestions {
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+.search-suggestion {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f8fa;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    transition: background-color 0.2s ease;
+}
+
+.search-suggestion:hover,
+.search-suggestion:focus {
+    background: #f6f8fa;
+    outline: none;
+}
+
+.search-suggestion.no-results {
+    color: #6a737d;
+    cursor: default;
+}
+
+.search-suggestion.no-results:hover {
+    background: white;
+}
+
+.suggestion-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.suggestion-title {
+    font-weight: 600;
+    color: #24292e;
+    margin-bottom: 0.25rem;
+}
+
+.suggestion-desc {
+    font-size: 0.8rem;
+    color: #6a737d;
+    line-height: 1.4;
+}
+
+.suggestion-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/* تحسينات للوضع الداكن */
+.dark-mode .search-suggestions {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: white;
+}
+
+.dark-mode .search-suggestion {
+    border-color: #404040;
+}
+
+.dark-mode .search-suggestion:hover,
+.dark-mode .search-suggestion:focus {
+    background: #404040;
+}
+
+.dark-mode .suggestion-title {
+    color: white;
+}
+
+.dark-mode .suggestion-desc {
+    color: #8b949e;
+}
+
+/* تحسينات للأداء */
+.disable-animations * {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* تحسينات للقوائم المتنقلة */
+.nav-toggle {
+    transition: transform 0.3s ease;
+}
+
+.user-avatar {
+    transition: transform 0.2s ease;
+}
+
+/* تحسينات للعلامات */
+.tab-button {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.tab-button.active::after {
+    transform: scaleX(1);
+}
+
+/* تحسينات للشفافية */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* تحسينات للطباعة */
+@media print {
+    nav {
+        display: none !important;
+    }
+    
+    .github-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+  }
+
 /* تحسينات الوصول */
 @media (prefers-reduced-motion: reduce) {
   * {
