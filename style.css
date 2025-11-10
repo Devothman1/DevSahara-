@@ -1422,3 +1422,41 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* 1) توحيد ترتيب الطبقات: خلي الـ navbar فوق الكل */
+.navbar {
+  z-index: 1200; /* تأكد أنه أعلى من أي dropdown أو card */
+}
+
+/* 2) اعطِ الـ sidebar قيمة z-index حتى لا تقف خلف عناصر أخرى بالخطأ */
+.sidebar {
+  position: sticky; /* كما لديك */
+  top: calc(60px + 1rem); /* اجعلها تتوافق مع ارتفاع navbar (60px) + هواية margin */
+  z-index: 1100; /* أقل قليلاً من navbar حتى تبقى تحته لو أردت، أو اجعله أعلى لو تريد أن يبقى فوق المحتوى */
+  /* optional: background to avoid transparency issues */
+  background: white;
+}
+
+/* 3) إذا البطاقة (promo / modal) يجب أن تبقى داخل صفحة بدون تغطية الـ sidebar: أعطها z-index منخفض */
+.feature-card, .promo-card, .advanced-card {
+  position: relative;
+  z-index: 20; /* تأكد أنها أقل من sidebar (1100) لو لا تريد تغطية */
+}
+
+/* 4) إذا كانت البطاقة التي تظهر في الصورة هي modal فعلاً — اجعلها fixed واستخدم z-index عالي */
+.advanced-modal {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(60px + 1rem); /* تحت الهيدر */
+  z-index: 2000; /* فوق كل شيء */
+  max-width: 480px;
+}
+
+/* 5) منع عناصر الآباء من خلق stacking context غير مرغوب */
+.parent-with-transform {
+  /* إذا تستطيع إزالة transform فهذا أفضل؛ غالباً تضع transform:none مؤقتاً لاختبار */
+  transform: none !important;
+}
+
+/* 6) توحيد قواعد navbar المكررة: احتفظ بواحدة فقط وإختر القيم النهائية */
